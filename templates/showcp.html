@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>all stock price</title>
+	</head>
+	<body>
+		<h1 align="center">All Stock Price</h1>
+		<table align="center" width="500" style="font-size:20px">
+		<tr><th>no</th><th>stockid</th><th>name</th><th>date</th><th>price</th></tr>
+		{% for i in stockList %}
+		<tr><td>{{i.id}}</td><td>{{i.stockid}}</td><td>{{i.stockname}}</td><td>{{i.date}}</td><td>{{i.price}}</td>
+		{% endfor %}
+		<div class="pagination">
+		    {% if stockList.has_previous %}
+		        <a href="?page={{ stockList.previous_page_number }}">back</a>
+		    {% endif %}
+		    <span class="current-page">{{ stockList.number }}</span>
+		    <span class="total-pages">{{ stockList.paginator.num_pages }}</span>
+		    {% if stockList.has_next %}
+		        <a href="?page={{ stockList.next_page_number }}">next</a>
+		    {% endif %}
+		</div>
+	</body>
+
+</html>
